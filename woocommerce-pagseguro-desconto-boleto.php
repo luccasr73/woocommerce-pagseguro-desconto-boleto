@@ -14,8 +14,8 @@
  *
  * @wordpress-plugin
  * Plugin Name:       WooCommerce Pagseguro Desconto Boleto
- * Plugin URI:        github.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Plugin URI:        https://github.com/luccasr73/woocommerce-pagseguro-desconto-boleto
+ * Description:       Plugin para adicionar a possibilidade de dar desconto em boletos emitidos pelo pagseguro.
  * Version:           1.0.0
  * Author:            Luccas Robert
  * Author URI:        github.com/luccasr73
@@ -63,8 +63,6 @@ register_deactivation_hook( __FILE__, 'deactivate_woocommerce_pagseguro_desconto
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-pagseguro-desconto-boleto.php';
-
-/*
 
 
 /**

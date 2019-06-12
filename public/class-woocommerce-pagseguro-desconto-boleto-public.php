@@ -92,8 +92,8 @@ class Woocommerce_Pagseguro_Desconto_Boleto_Public {
 		if(empty(WC()->cart->get_applied_coupons())) {
 			$total = WC()->cart->cart_contents_total;
 			$shipping = WC()->cart->get_shipping_total();
-			$desconto = (int)get_option( $this->plugin_name.'discount_value', 10 );
-			$discount = number_format( $total * ( $desconto / 100 ), 2, '.', ',' );
+			$discountValue = (int)get_option( $this->plugin_name.'discount_value', 10 );
+			$discount = number_format( $total * ( $discountValue / 100 ), 2, '.', ',' );
 			
 				echo ' <tr class="cart-total-boleto order-total">
 					<th>' . __( "Valor com desconto", "woocommerce" ) . '</th>
@@ -103,7 +103,6 @@ class Woocommerce_Pagseguro_Desconto_Boleto_Public {
 	}
 
 	function apply_discount_on_boleto_cumulative( $xml, $order ) {
-		//if(empty(WC()->cart->get_applied_coupons())) {
 			$newxml = $xml;
 			if($newxml->method == 'boleto'){
 				$shipping = WC()->cart->get_shipping_total();
@@ -132,22 +131,19 @@ class Woocommerce_Pagseguro_Desconto_Boleto_Public {
 				$order->save();
 			}
 			return $newxml;
-		//}
 	}
 	
 
 	function display_total_boleto_cumulative() {
-		//if(empty(WC()->cart->get_applied_coupons())) {
 			$total = WC()->cart->cart_contents_total;
 			$shipping = WC()->cart->get_shipping_total();
-			$desconto = (int)get_option( $this->plugin_name.'discount_value', 10 );
-			$discount = number_format( $total * ( $desconto / 100 ), 2, '.', ',' );
+			$discountValue = (int)get_option( $this->plugin_name.'discount_value', 10 );
+			$discount = number_format( $total * ( $discountValue / 100 ), 2, '.', ',' );
 			
 				echo ' <tr class="cart-total-boleto order-total">
 					<th>' . __( "Valor com desconto", "woocommerce" ) . '</th>
 					<td data-title="total-boleto"><strong style="color:#333">'.wc_price((float)$shipping + $total-(float)$discount).' à vista no boleto</strong></td>
 				</tr>';
-		//}
 	}
 
 }
